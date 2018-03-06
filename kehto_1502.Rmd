@@ -14,7 +14,7 @@ Sitten seuraavaksi katsomme miten nelj? eniten valittun kehitt?mistoimenpiteen a
 
 kolmanneksi katsomme oliko 'liikennevaloilla' oikeasti merkityst? kehitt?mistoimenpiteit? valittaessa. Ja viimeksi LASSO (Least Absolute Shrinkage Selector Operator), regression arvioimaan ett? mitk? muuttujan parhaiten ennustavat kehitt?mistoimenpiteen valintaa. (Lasso regression analysis is a shrinkage and variable selection method for linear regression models. The goal of lasso regression is to obtain the subset of predictors that minimizes prediction error for a quantitative response variable. The lasso does this by imposing a constraint on the model parameters that causes regression coefficients for some variables to shrink toward zero. Variables with a regression coefficient equal to zero after the shrinkage process are excluded from the model. Variables with non-zero regression coefficients variables are most strongly associated with the response variable)
 
-Does this work?
+Does this work? not really
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -1144,6 +1144,29 @@ summary(s_dat2$k_v_sum)
 Sek? vihreill? ja punaisilla huomiov?reill? on pareto jakauma. 
 
 ### Liikennevalojen jakauma kehdon tekij?iden ja tekem?tt?mien v?lill?
+
+Jakauma on suhteellisen samanlainen sek? koko aineistolle ett?, ty?yksik?ille jotka tekiv?t kehitt?mistoimenpiteit?
+
+```{r, echo=FALSE}
+ggplot(k_dat2, aes(x = p_sum), main="Punaisten liikennevalojen jakauma") +
+  geom_histogram()
+summary(s_dat2$p_sum)
+summary(k_dat2$p_sum)
+
+g <- ggplot(s_dat2, aes(p_sum)) 
+g+geom_bar(aes(fill=kehto_l))
+
+ggplot(k_dat2, aes(x = k_v_sum), main="Vihreiden liikennevalojen jakauma") +
+  geom_histogram()
+summary(s_dat2$k_v_sum)
+summary(k_dat2$k_v_sum)
+
+g <- ggplot(s_dat2, aes(k_v_sum)) 
+g+geom_bar(aes(fill=kehto_l))
+
+```
+
+### Tämä on tupla
 
 Jakauma on suhteellisen samanlainen sek? koko aineistolle ett?, ty?yksik?ille jotka tekiv?t kehitt?mistoimenpiteit?
 
